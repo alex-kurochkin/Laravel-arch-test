@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "778e9490-da02-46ec-a412-9aa9355fd85b",
+    "name": "Test Latavel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "13520074"
+  },
+  "item": [
+    {
+      "name": "Products index",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{proto}}://{{host}}:{{port}}/{{api-prefix}}/products",
+          "protocol": "{{proto}}",
+          "host": [
+            "{{host}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "{{api-prefix}}",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category index list",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{proto}}://{{host}}:{{port}}/{{api-prefix}}/categories",
+          "protocol": "{{proto}}",
+          "host": [
+            "{{host}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "{{api-prefix}}",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Products create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": 1,\n    \"name\": \"iPhone 15 Pro\",\n    \"slug\": \"iphone-15-pro\",\n    \"description\": \"Смартфон от Apple\",\n    \"price\": 999.99,\n    \"formatted_price\": \"999.99\",\n    \"stock_quantity\": 50,\n    \"is_active\": true,\n    \"status\": \"active\",\n    \"category\": {\n        \"id\": 3,\n        \"name\": \"Смартфоны\",\n        \"slug\": \"smartphones\",\n        \"full_path\": \"Электроника > Смартфоны\"\n    },\n    \"created_at\": \"2024-01-15T10:30:00.000000Z\",\n    \"updated_at\": \"2024-01-15T10:30:00.000000Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{proto}}://{{host}}:{{port}}/{{api-prefix}}/products",
+          "protocol": "{{proto}}",
+          "host": [
+            "{{host}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "{{api-prefix}}",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category index list tree",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{proto}}://{{host}}:{{port}}/{{api-prefix}}/categories/tree",
+          "protocol": "{{proto}}",
+          "host": [
+            "{{host}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "{{api-prefix}}",
+            "categories",
+            "tree"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Аксессуары\",\n    \"description\": \"Различные аксессуары\",\n    \"parent_id\": 1,\n    \"sort_order\": 3,\n    \"is_active\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{proto}}://{{host}}:{{port}}/{{api-prefix}}/categories",
+          "protocol": "{{proto}}",
+          "host": [
+            "{{host}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "{{api-prefix}}",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

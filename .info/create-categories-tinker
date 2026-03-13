@@ -1,0 +1,46 @@
+php artisan tinker
+
+// Создаем корневые категории
+$electronics = \Modules\Catalogue\Models\Category::create([
+    'name' => 'Электроника',
+    'slug' => 'electronics',
+    'description' => 'Вся электроника',
+    'sort_order' => 1,
+    'is_active' => true
+]);
+
+$clothing = \Modules\Catalogue\Models\Category::create([
+    'name' => 'Одежда',
+    'slug' => 'clothing',
+    'description' => 'Модная одежда',
+    'sort_order' => 2,
+    'is_active' => true
+]);
+
+// Создаем подкатегории
+\Modules\Catalogue\Models\Category::create([
+    'name' => 'Смартфоны',
+    'slug' => 'smartphones',
+    'description' => 'Мобильные телефоны',
+    'parent_id' => $electronics->id,
+    'sort_order' => 1,
+    'is_active' => true
+]);
+
+\Modules\Catalogue\Models\Category::create([
+    'name' => 'Ноутбуки',
+    'slug' => 'laptops',
+    'description' => 'Портативные компьютеры',
+    'parent_id' => $electronics->id,
+    'sort_order' => 2,
+    'is_active' => true
+]);
+
+\Modules\Catalogue\Models\Category::create([
+    'name' => 'Мужская одежда',
+    'slug' => 'mens-clothing',
+    'description' => 'Одежда для мужчин',
+    'parent_id' => $clothing->id,
+    'sort_order' => 1,
+    'is_active' => true
+]);

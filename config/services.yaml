@@ -1,0 +1,3 @@
+services:
+  error_renderer:
+    alias: 'error_renderer.serializer'

@@ -1,0 +1,73 @@
+composer dump-autoload
+
+php artisan optimize:clear
+php artisan route:clear
+php artisan config:clear
+
+php artisan tinker
+
+
+php artisan module:make Catalogue --api
+
+php artisan make:migration create_product_images_table
+
+php artisan module:migrate Catalogue
+php artisan module:migrate Product
+
+php artisan migrate:rollback --path=Modules/Catalogue/database/migrations/2026_03_04_180155_add_nestedset_to_categories_table.php
+
+
+
+php artisan serve
+
+
+
+
+
+php artisan storage:link
+
+
+
+
+
+Tests
+
+# Из корня проекта
+./vendor/bin/phpunit Modules/Product/tests
+
+# Или с указанием конкретного файла
+./vendor/bin/phpunit Modules/Product/tests/Feature/ProductDataDTOTest.php
+
+# С фильтром
+./vendor/bin/phpunit --filter ProductApiTest
+./vendor/bin/phpunit --filter it_can_create_product
+
+
+
+
+
+# Или напрямую через phpunit
+cd Modules/Product
+../../../vendor/bin/phpunit
+
+# Запуск конкретного тестового файла
+../../../vendor/bin/phpunit tests/Feature/ProductApiTest.php
+
+# Запуск с фильтром по имени теста
+../../../vendor/bin/phpunit --filter it_can_create_product
+
+
+
+
+
+"test": "phpunit",
+"test:product": "phpunit Modules/Product/tests",
+"test:catalogue": "phpunit Modules/Catalogue/tests",
+"test:feature": "phpunit --testsuite=Feature",
+"test:unit": "phpunit --testsuite=Unit"
+
+
+tree -I 'vendor|bootstrap|public|resources|storage|stubs' > project.tree
+
+php artisan catalogue:rebuild-tree
+php artisan db:seed --class=ConvertCategoriesToNestedsetSeeder
